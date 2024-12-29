@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { FaBook, FaHandHoldingHeart, FaInfoCircle, FaGift } from 'react-icons/fa';
 
 const Container = styled.div`
   max-width: 1600px;
