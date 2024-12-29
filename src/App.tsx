@@ -1,34 +1,61 @@
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 4rem;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 4rem;
+  }
 `;
 
 const NavContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
+  padding: 1rem 0;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    padding: 0;
+  }
 `;
 
 const MenuItems = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-left: 4rem;
-  flex: 1;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: 4rem;
+    flex: 1;
+    white-space: nowrap;
+  }
 `;
 
 const ActionItems = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0;
+    width: auto;
+  }
 `;
 
 const Hero = styled.div`
   text-align: center;
-  padding: 0;
+  padding: 120px 0 60px;
   background: url('/backgorund-top.png') no-repeat top center;
   background-size: cover;
   position: relative;
@@ -36,15 +63,45 @@ const Hero = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 160px;
+
+  h1 {
+    font-size: 3rem;
+    
+    @media (min-width: 768px) {
+      font-size: 6rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 8rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    padding: 0 1rem;
+    
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
 `;
 
 const Features = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 2rem;
-  padding: 4rem 0;
-  margin-top: -4rem;
+  padding: 2rem 0;
+  margin-top: -2rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4rem 0;
+    margin-top: -4rem;
+  }
 `;
 
 const FeatureCard = styled.div`
@@ -89,40 +146,58 @@ const MapSection = styled.div`
 
 const TurkeyMap = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 8rem;
+  grid-template-columns: 1fr;
+  gap: 4rem;
   align-items: center;
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 8rem;
+    margin-bottom: 8rem;
+  }
 
   img {
-    width: 120%;
+    width: 100%;
     height: auto;
-    max-width: none;
-    margin-left: -10%;
+    margin-left: 0;
+
+    @media (min-width: 1024px) {
+      width: 120%;
+      max-width: none;
+      margin-left: -10%;
+    }
   }
 `;
 
 const StatText = styled.div`
-  text-align: right;
-  color: var(--secondary);
+  text-align: center;
+  
+  @media (min-width: 1024px) {
+    text-align: right;
+  }
   
   .number {
-    font-size: 8rem;
-    font-weight: bold;
-    line-height: 1;
-    margin-bottom: 1.5rem;
+    font-size: 4rem;
     
-    .dot {
-      color: var(--primary);
+    @media (min-width: 768px) {
+      font-size: 6rem;
+    }
+    
+    @media (min-width: 1024px) {
+      font-size: 8rem;
     }
   }
 
   .description {
-    font-size: 1.4rem;
-    line-height: 1.8;
+    font-size: 1.1rem;
     
-    .highlight {
-      color: var(--primary);
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+    
+    @media (min-width: 1024px) {
+      font-size: 1.4rem;
     }
   }
 `;
@@ -153,9 +228,19 @@ const PhotoSection = styled.div`
 
 const PhotoGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin-top: 3rem;
+  padding: 0 1rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+  }
 `;
 
 const PhotoCard = styled.div`
@@ -172,6 +257,7 @@ const NavLink = styled.a`
   padding: 0.5rem 1rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover {
     opacity: 0.8;
@@ -368,49 +454,45 @@ const FooterInput = styled.div`
 
 const FooterLinks = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
 
-  h3 {
-    color: var(--secondary);
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      color: var(--secondary);
-      opacity: 0.8;
-      margin-bottom: 0.75rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-top: 4rem;
   }
 `;
 
 const FooterBottom = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-top: 4rem;
+  gap: 1rem;
+  margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--secondary);
-  opacity: 0.8;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
 
   .links {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 2rem;
+    }
   }
 `;
 
@@ -442,6 +524,7 @@ const HeaderButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 
   &:hover {
     opacity: 0.9;
@@ -449,13 +532,75 @@ const HeaderButton = styled.button`
   }
 `;
 
+// Mobil menü için yeni component
+const MobileMenu = styled.div`
+  display: block;
+  width: auto;
+  padding: 1rem 0;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+
+  .menu-button {
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+`;
+
+const MobileMenuContent = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dark-green);
+  padding: 2rem;
+  z-index: 100;
+
+  &.active {
+    display: block;
+  }
+
+  .mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    align-items: center;
+  }
+
+  .mobile-menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+`;
+
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-dark-green">
       <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent py-6">
         <Container>
           <NavContainer>
-            <img src="/logo.png" alt="BGYardım Logo" className="h-12" />
+            <div className="flex justify-between items-center w-full">
+              <img src="/logo.png" alt="BGYardım Logo" className="h-12 md:h-14" />
+              <MobileMenu>
+                <button className="menu-button" onClick={() => setIsMobileMenuOpen(true)}>☰</button>
+              </MobileMenu>
+            </div>
             <MenuItems>
               <NavLink>Projeler</NavLink>
               <NavLink>Biz Kimiz</NavLink>
@@ -472,6 +617,19 @@ function App() {
           </NavContainer>
         </Container>
       </nav>
+
+      <MobileMenuContent className={isMobileMenuOpen ? 'active' : ''}>
+        <button className="mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>✕</button>
+        <div className="mobile-menu-items">
+          <NavLink>Projeler</NavLink>
+          <NavLink>Biz Kimiz</NavLink>
+          <NavLink>Kitap Bağışla</NavLink>
+          <NavLink>Burs Al</NavLink>
+          <NavLink>Burs Ver</NavLink>
+          <NavLink className="text-primary">Ana Sayfa</NavLink>
+          <HeaderButton>Lorem ipsum dolor sit amet</HeaderButton>
+        </div>
+      </MobileMenuContent>
 
       <Hero>
         <Container>
@@ -569,11 +727,6 @@ function App() {
               <PhotoGrid>
                 <PhotoCard>
                   <div className="star-icon">★</div>
-                  <h3 className="text-2xl font-bold mb-4">Örnek Fotoğraf</h3>
-                  <p className="text-gray-600">Lorem ipsum dolor sit amet</p>
-                </PhotoCard>
-                <PhotoCard>
-                  <div className="star-icon">☆</div>
                   <h3 className="text-2xl font-bold mb-4">Örnek Fotoğraf</h3>
                   <p className="text-gray-600">Lorem ipsum dolor sit amet</p>
                 </PhotoCard>
