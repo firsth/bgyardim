@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import { FaBook, FaHandHoldingHeart, FaInfoCircle, FaGift } from 'react-icons/fa';
 
@@ -49,7 +48,7 @@ const Features = styled.div`
   margin-top: -4rem;
 `;
 
-const FeatureCard = styled(motion.div)`
+const FeatureCard = styled.div`
   background: var(--secondary);
   padding: 2rem;
   border-radius: 2rem;
@@ -60,6 +59,11 @@ const FeatureCard = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const IconCircle = styled.div`
@@ -494,40 +498,28 @@ function App() {
           <SectionTitle>Sample Text</SectionTitle>
           <SectionHeading>Lorem Ipsum</SectionHeading>
           <Features>
-            <FeatureCard
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <FeatureCard>
               <IconCircle>
                 <img src="/img1.png" alt="Burs Al" />
               </IconCircle>
               <h3 className="text-2xl font-bold">Burs Al</h3>
               <p className="text-gray-600">(Burs Al)</p>
             </FeatureCard>
-            <FeatureCard
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <FeatureCard>
               <IconCircle>
                 <img src="/img2.png" alt="Burs Ver" />
               </IconCircle>
               <h3 className="text-2xl font-bold">Burs Ver</h3>
               <p className="text-gray-600">(Burs Al)</p>
             </FeatureCard>
-            <FeatureCard
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <FeatureCard>
               <IconCircle>
                 <img src="/img3.png" alt="Kitap Bağışla" />
               </IconCircle>
               <h3 className="text-2xl font-bold">Kitap Bağışla</h3>
               <p className="text-gray-600">(Kitap Bağışla)</p>
             </FeatureCard>
-            <FeatureCard
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <FeatureCard>
               <IconCircle>
                 <img src="/logo.png" alt="Biz Kimiz" />
               </IconCircle>
