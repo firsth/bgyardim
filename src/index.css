@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #DE664D;
+  --secondary: #FCFAE3;
+  --dark-green: #254539;
+  --dark: #1C1C1C;
+  --gray: #555555;
+  --light-green: #C1F1C6;
+  --navy: #161C28;
+  --mint: #54BD95;
+}
+
+body {
+  margin: 0;
+  font-family: 'SF Pro Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--dark-green);
+  color: var(--secondary);
+}
+
+.site-title {
+  font-family: 'Rubik Bubbles', system-ui;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, li {
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+.section-title {
+  font-family: 'SF Pro Display', sans-serif;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.section-heading {
+  font-family: 'SF Pro Display', sans-serif;
+  color: var(--secondary);
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.map-section {
+  margin: 6rem 0;
+}
+
+.stat-number {
+  font-size: 8rem;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--secondary);
+}
+
+.stat-number .dot {
+  color: var(--primary);
+}
+
+.stat-description {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--secondary);
+}
+
+.stat-description .highlight {
+  color: var(--primary);
+}
+
+.map-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+  margin-bottom: 6rem;
+}
+
+.map-container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
